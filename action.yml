@@ -55,7 +55,7 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - uses: 'actions/setup-go@v4'
+    - uses: 'actions/setup-go@v5'
       with:
         go-version: ${{ inputs.go-version }}
         go-version-file: ${{ inputs.go-version-file }}
@@ -66,7 +66,9 @@ runs:
         architecture: ${{ inputs.architecture }}
 
     - name: 'Setup Go+'
-      run: node $GITHUB_ACTION_PATH/dist/index.js
+      run: |
+        env
+        go run .
       shell: bash
       env:
         INPUT_GOP_VERSION: ${{ inputs.gop-version }}
