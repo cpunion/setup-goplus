@@ -87,6 +87,13 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
+      - name: Debug
+        run: |
+          env
+          echo "GITHUB_ACTION_REPOSITORY: $GITHUB_ACTION_REPOSITORY"
+          echo "GITHUB_WORKFLOW_REF: $GITHUB_WORKFLOW_REF"
+          echo "CURRENT_REPO: ${{ github.context.repo.owner }}/${{ github.context.repo.name }}"
+
       - name: Test Gop Version
         id: test-gop-version
         uses: ./
